@@ -10,8 +10,10 @@ const oxanium = Oxanium({
 export const metadata: Metadata = { 
   title: "Utillect",
   description: "MicroSaasTools",
+  verification: {
+    google: "waP7l0v2kiIe8DeM8CfYqR4hqxTXC98ji4KdoG8JFbU",
+  },
 };
-
 
 export default function RootLayout({
   children,
