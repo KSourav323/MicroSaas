@@ -56,5 +56,48 @@ export const servicesList: ServiceItem[] = [
   { tool: "audio_tool", name: "audio_converter", label: "Audio Format Converter" },
   { tool: "audio_tool", name: "text_to_speech", label: "Text to Speech" },
 
+  // VIDEO TOOLS
+  { tool: "video_tool", name: "video_compressor", label: "Video Compressor" },
+  { tool: "video_tool", name: "video_to_gif", label: "Video to GIF" },
+  { tool: "video_tool", name: "gif_to_video", label: "GIF to MP4" },
+  { tool: "video_tool", name: "video_trimmer", label: "Video Trimmer" },
+  { tool: "video_tool", name: "video_audio_extract", label: "Extract Audio from Video" },
+  { tool: "video_tool", name: "video_speed", label: "Video Speed Changer" },
+  { tool: "video_tool", name: "video_thumbnail", label: "Video Thumbnail Generator" },
+
+  // COLOR TOOLS
+  { tool: "color_tool", name: "color_picker", label: "Color Picker" },
+  { tool: "color_tool", name: "color_palette", label: "Color Palette Generator" },
+  { tool: "color_tool", name: "gradient_generator", label: "Gradient Generator" },
+  { tool: "color_tool", name: "hex_to_rgb", label: "HEX to RGB Converter" },
+  { tool: "color_tool", name: "rgb_to_hex", label: "RGB to HEX Converter" },
+
+  // SEO TOOLS
+  { tool: "seo_tool", name: "meta_tag_generator", label: "Meta Tag Generator" },
+  { tool: "seo_tool", name: "keyword_extractor", label: "Keyword Extractor" },
+  { tool: "seo_tool", name: "url_parser", label: "URL Parser" },
+  { tool: "seo_tool", name: "sitemap_generator", label: "Sitemap Generator" },
+  { tool: "seo_tool", name: "robot_creator", label: "robots.txt Generator" },
+
+  // CODE TOOLS
+  { tool: "code_tool", name: "json_formatter", label: "JSON Formatter" },
+  { tool: "code_tool", name: "json_to_csv", label: "JSON to CSV Converter" },
+  { tool: "code_tool", name: "csv_to_json", label: "CSV to JSON Converter" },
+  { tool: "code_tool", name: "base64_encode", label: "Base64 Encoder" },
+  { tool: "code_tool", name: "base64_decode", label: "Base64 Decoder" },
+  { tool: "code_tool", name: "jwt_decoder", label: "JWT Decoder" },
+
+  // MATH & UTILITY
+  { tool: "math_tool", name: "percentage_calc", label: "Percentage Calculator" },
+  { tool: "math_tool", name: "bmi_calc", label: "BMI Calculator" },
+  { tool: "math_tool", name: "random_number", label: "Random Number Generator" },
+  { tool: "math_tool", name: "unit_converter", label: "Unit Converter" },
+  { tool: "math_tool", name: "time_converter", label: "Time Zone Converter" },
+
+  // MISC + FUN
+  { tool: "misc_tool", name: "qr_generator", label: "QR Code Generator" },
+  { tool: "misc_tool", name: "meme_text", label: "Meme Text Generator" },
+  { tool: "misc_tool", name: "ascii_art", label: "ASCII Art Generator" },
+  { tool: "misc_tool", name: "emoji_picker", label: "Emoji Picker" },
 ];
 
