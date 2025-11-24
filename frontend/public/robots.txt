@@ -1,0 +1,9 @@
+# *
+User-agent: *
+Allow: /
+
+# Host
+Host: https://utillect.vercel.app
+
+# Sitemaps
+Sitemap: https://utillect.vercel.app/sitemap.xml
