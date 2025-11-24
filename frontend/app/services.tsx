@@ -49,12 +49,12 @@ export const servicesList: ServiceItem[] = [
   { tool: "text_tool", name: "hashtag_generator", label: "Hashtag Generator" },
 
   // AUDIO TOOLS
-  { tool: "audio_tools", name: "audio_vocal", label: "Audio Vocal Extractor" },
-  { tool: "audio_tools", name: "audio_noise", label: "Noise Reduction" },
-  { tool: "audio_tools", name: "audio_speed", label: "Audio Speed Changer" },
-  { tool: "audio_tools", name: "audio_pitch", label: "Pitch Shifter" },
-  { tool: "audio_tools", name: "audio_converter", label: "Audio Format Converter" },
-  { tool: "audio_tools", name: "text_to_speech", label: "Text to Speech" },
+  { tool: "audio_tool", name: "audio_vocal", label: "Audio Vocal Extractor" },
+  { tool: "audio_tool", name: "audio_noise", label: "Noise Reduction" },
+  { tool: "audio_tool", name: "audio_speed", label: "Audio Speed Changer" },
+  { tool: "audio_tool", name: "audio_pitch", label: "Pitch Shifter" },
+  { tool: "audio_tool", name: "audio_converter", label: "Audio Format Converter" },
+  { tool: "audio_tool", name: "text_to_speech", label: "Text to Speech" },
 
   // VIDEO TOOLS
   { tool: "video_tool", name: "video_compressor", label: "Video Compressor" },
@@ -95,9 +95,9 @@ export const servicesList: ServiceItem[] = [
   { tool: "math_tool", name: "time_converter", label: "Time Zone Converter" },
 
   // MISC + FUN
-  { tool: "fun_tool", name: "qr_generator", label: "QR Code Generator" },
-  { tool: "fun_tool", name: "meme_text", label: "Meme Text Generator" },
-  { tool: "fun_tool", name: "ascii_art", label: "ASCII Art Generator" },
-  { tool: "fun_tool", name: "emoji_picker", label: "Emoji Picker" },
+  { tool: "misc_tool", name: "qr_generator", label: "QR Code Generator" },
+  { tool: "misc_tool", name: "meme_text", label: "Meme Text Generator" },
+  { tool: "misc_tool", name: "ascii_art", label: "ASCII Art Generator" },
+  { tool: "misc_tool", name: "emoji_picker", label: "Emoji Picker" },
 ];
 
