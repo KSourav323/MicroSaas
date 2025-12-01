@@ -11,12 +11,12 @@ export const metadata: Metadata = {
   metadataBase: new URL("https://utillect.dev"),
 
   title: {
-    default: "Utillect - Free Online Tools",
+    default: "Utillect - Free Online Tools | Professional Web Utilities",
     template: "%s | Utillect",
   },
 
   description:
-    "Utillect is a collection of free, privacy-first online tools for text, development, and productivity. No login required.",
+    "Access 50+ free online tools for developers, designers, and creators. Image compression, PDF merging, code formatting, color pickers, and more. No registration required.",
 
   keywords: [
     "free online tools",

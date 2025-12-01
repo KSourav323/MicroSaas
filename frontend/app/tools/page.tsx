@@ -5,7 +5,7 @@ import { Metadata } from "next";
 
 // SEO Metadata - Server Component
 export const metadata: Metadata = {
-  title: "Free Online Tools - Utillect | Professional Web Utilities",
+  title: "Utillect - Free Online Tools | Professional Web Utilities",
   description: "Access 50+ free online tools for developers, designers, and creators. Image compression, PDF merging, code formatting, color pickers, and more. No registration required.",
   keywords: "free online tools, web utilities, image compressor, pdf merger, code formatter, color picker, developer tools, design tools, text utilities, file converter",
   authors: [{ name: "EssentriqLab" }],
