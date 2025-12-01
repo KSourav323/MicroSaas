@@ -8,7 +8,7 @@ const oxanium = Oxanium({
   variable: "--font-oxanium",
 });
 export const metadata: Metadata = { 
-  metadataBase: new URL("https://utillect.vercel.app"),
+  metadataBase: new URL("https://utillect.dev"),
 
   title: {
     default: "Utillect - Free Online Tools",
@@ -107,7 +107,7 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     siteName: "Utillect",
-    url: "https://utillect.vercel.app",
+    url: "https://utillect.dev",
     images: "/og-image.png",
   },
 

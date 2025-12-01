@@ -18,7 +18,7 @@ export const siteMetadata = {
     title: "Utillect – Free Micro SaaS Tools",
     description:
       "A growing collection of simple, fast, and anonymous tools for everyday tasks.",
-    url: "https://utillect.com",
+    url: "https://utillect.dev",
     siteName: "Utillect",
     type: "website",
     locale: "en_US",

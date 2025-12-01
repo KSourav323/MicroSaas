@@ -1,10 +1,56 @@
 import Link from "next/link";
 import fs from "fs";
 import path from "path";
-import AdBlock from "../components/AdBlock";
-import ToolSearch from "../components/ToolSearch";
+import { Metadata } from "next";
 
-export default function Tools() {
+// SEO Metadata - Server Component
+export const metadata: Metadata = {
+  title: "Free Online Tools - Utillect | Professional Web Utilities",
+  description: "Access 50+ free online tools for developers, designers, and creators. Image compression, PDF merging, code formatting, color pickers, and more. No registration required.",
+  keywords: "free online tools, web utilities, image compressor, pdf merger, code formatter, color picker, developer tools, design tools, text utilities, file converter",
+  authors: [{ name: "EssentriqLab" }],
+  creator: "EssentriqLab",
+  publisher: "EssentriqLab",
+  openGraph: {
+    title: "Free Online Tools - Utillect",
+    description: "Professional web utilities for developers and creators. Fast, free, and privacy-focused.",
+    url: "https://utillect.dev/tools",
+    siteName: "Utillect",
+    locale: "en_US",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Free Online Tools - Utillect",
+    description: "Professional web utilities for developers and creators.",
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
+  },
+  alternates: {
+    canonical: "https://utillect.dev/tools",
+  },
+};
+
+// Tool categories for SEO
+const toolCategories = {
+  image: ["Image Compressor", "Image Converter", "Image Resizer"],
+  document: ["PDF Merger", "PDF Splitter", "Word Counter"],
+  developer: ["Code Formatter", "JSON Validator", "Base64 Encoder"],
+  design: ["Color Picker", "Gradient Generator", "Font Pairer"],
+  text: ["Text Fonts", "Case Converter", "Text Reverser"],
+  audio: ["Vocal Remover", "Audio Converter", "MP3 Cutter"],
+};
+
+export default function ToolsPage() {
   const toolsDir = path.join(process.cwd(), "app", "tools_data");
 
   const tools = fs
@@ -12,208 +58,303 @@ export default function Tools() {
     .filter((dirent) => dirent.isDirectory())
     .map((dirent) => dirent.name);
 
+  const currentYear = new Date().getFullYear();
+
+  const formatToolName = (tool: string) => {
+    return tool
+      .split(/[_-]/)
+      .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+      .join(" ");
+  };
+
   return (
-    <main
-      className="
-        min-h-screen flex flex-col 
-        text-gray-100 relative overflow-hidden
-
-        bg-black 
-        bg-[linear-gradient(90deg,transparent_0,transparent_40%,rgba(30,70,180,0.45)_47.5%,rgba(53,102,236,0.45)_49.5%,rgba(130,195,251,1)_50%,rgba(53,102,236,0.45)_50.5%,rgba(30,70,180,0.45)_52.5%,transparent_60%,transparent_100%)]
-      "
-    >
-      {/* ============================================================================================
-          HEADER WITH GO BACK BUTTON
-      ============================================================================================= */}
-      <header className="w-full py-5 px-8 flex justify-between items-center backdrop-blur-xl bg-white/5 border-b border-white/10 fixed top-0 left-0 z-50">
-        {/* Empty space to balance layout */}
-        <div className="w-[70px]"><p className="text-xs">From EssentriqLab</p></div>
-        
-
-        {/* Logo */}
-        <Link href="/">
-          <h1 className="text-2xl font-extrabold bg-gradient-to-r from-purple-300 via-white to-cyan-200 bg-clip-text text-transparent">
-            UTILLECT
-          </h1>
-        </Link>
-
-        
-        {/* Back Button */}
-        <Link
-          href="/"
-          className="px-4 py-2 rounded-full bg-white/5 border border-white/10 text-gray-200 
-            hover:bg-white/10 hover:scale-105 transition-all"
-        >
-          ← Back
-        </Link>
-      </header>
-
-      {/* Page content wrapper (pushes footer down) */}
-      <div className="flex-1 pt-32 pb-20">
-        {/* Background Glow */}
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[900px] h-[900px] bg-gradient-to-r from-[#7040ff30] to-[#00e1ff30] blur-[220px] opacity-40 -z-10" />
-
-        {/* Futuristic tech grid */}
-        <div className="absolute inset-0 bg-[url('https://svgshare.com/i/13rC.svg')] bg-repeat opacity-[0.05] -z-10" />
-
-        {/* Title */}
-        <h1 className="text-center text-5xl sm:text-6xl font-extrabold mb-8">
-          <span className="bg-gradient-to-r from-purple-300 via-white to-cyan-200 bg-clip-text text-transparent">
-            UTILLECT Tools
-          </span>
-          <span className="block text-xl sm:text-2xl mt-4 text-gray-300 tracking-widest">
-            Explore All Free Micro SaaS Utilities
-          </span>
-        </h1>
-
-        {/* Tools Row (Horizontal Scroll) */}
-        <section
-          className="max-w-4xl mx-auto mt-10 mb-18 px-4 sm:px-0 relative"
-          style={{ 
-            WebkitMaskImage: "linear-gradient(to right, transparent, white 10%, white 90%, transparent)", 
-            maskImage: "linear-gradient(to right, transparent, white 10%, white 90%, transparent)", }}
-          >
-
-  {/* ===== Static Tools Label Left Side ===== */}
-  <div className="absolute left-0 top-1/2 -translate-y-1/2 z-10 pointer-events-none">
-    <div
-      className="
-        bg-black/60 
-        px-4 py-3
-        rounded-tr-2xl rounded-br-2xl
-        flex items-center gap-2
-        text-gray-100 font-semibold
-
-        shadow-[inset_0_0_15px_rgba(255,255,255,0.08),0_8px_20px_rgba(0,0,0,0.25)]
-      "
-
-    >
-      <span>Tools</span>
-      <span className="opacity-70">→</span>
-    </div>
-  </div>
-
-  {/* ===== Scrollable Tool Row ===== */}
-      <div
-        className="
-          flex gap-4 overflow-x-auto scrollbar-thin scrollbar-thumb-white/20
-          pl-28       /* push right so label doesn’t overlap */
-        "
-        style={{
-          whiteSpace: "nowrap",
+    <>
+      {/* Structured Data for SEO */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "WebPage",
+            "name": "Free Online Tools - Utillect",
+            "description": "Collection of professional web utilities for developers and creators",
+            "url": "https://utillect.dev/tools",
+            "publisher": {
+              "@type": "Organization",
+              "name": "EssentriqLab",
+              "email": "essentriqlab@gmail.com"
+            },
+            "mainEntity": {
+              "@type": "ItemList",
+              "itemListElement": tools.map((tool, index) => ({
+                "@type": "SoftwareApplication",
+                "position": index + 1,
+                "name": formatToolName(tool),
+                "applicationCategory": "WebApplication",
+                "offers": {
+                  "@type": "Offer",
+                  "price": "0",
+                  "priceCurrency": "USD"
+                }
+              }))
+            }
+          })
         }}
-      >
-        {tools.map((tool) => (
-          <Link
-            key={tool}
-            href={`/tools/${tool}`}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="
-              min-w-[140px] max-w-[140px] h-[40px]
-              flex items-center justify-center text-center
-              rounded-xl
-              border border-white/10 
-              bg-gradient-to-br from-white/5 to-white/10
-              backdrop-blur-xl
+      />
 
-              shadow-[0_0_15px_rgba(255,255,255,0.06)]
-              hover:shadow-[0_0_20px_rgba(255,255,255,0.15)]
-              hover:border-cyan-400/40
-              hover:bg-white/10
-
-              transition-all duration-200 cursor-pointer
-            "
+      <main className="min-h-screen bg-black text-white">
+        {/* Header */}
+        <header className="sticky top-0 z-50 bg-black/80 backdrop-blur-xl border-b border-zinc-800">
+          <nav 
+            className="max-w-7xl mx-auto px-6 lg:px-8 h-16 flex items-center justify-between"
+            role="navigation"
+            aria-label="Main navigation"
           >
-            <h2 className="text-xl mb-2 bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent pt-[7px]">
-              {tool.split(/[_-]/)[0].charAt(0).toUpperCase() +
-                tool.split(/[_-]/)[0].slice(1)}
+            <div className="text-xs text-zinc-400 tracking-wider hidden sm:block">
+              FROM ESSENTRIQLAB
+            </div>
+
+            <Link 
+              href="/" 
+              className="text-xl font-light tracking-[0.3em]"
+              aria-label="Utillect Home"
+            >
+              UTILLECT
+            </Link>
+
+            <Link
+              href="/"
+              className="px-6 py-2 text-sm border border-zinc-800 hover:bg-zinc-900 transition-all"
+              aria-label="Back to home"
+            >
+              ← Back
+            </Link>
+          </nav>
+        </header>
+
+        {/* Hero Section */}
+        <section className="pt-32 pb-20 px-6 lg:px-8">
+          <div className="max-w-7xl mx-auto text-center space-y-6">
+            <h1 className="text-5xl md:text-6xl lg:text-7xl font-light tracking-tight leading-tight">
+              Professional Tools
+              <br />
+              <span className="text-zinc-400">For Every Task</span>
+            </h1>
+            <p className="text-lg text-zinc-400 max-w-2xl mx-auto font-light">
+              {tools.length}+ free utilities for developers, designers, and creators. 
+              No registration, no limits, no tracking.
+            </p>
+          </div>
+        </section>
+
+        {/* Quick Access Horizontal Scroll */}
+        <section 
+          className="max-w-7xl mx-auto px-6 lg:px-8 mb-20"
+          aria-label="Quick access tools"
+        >
+          <div className="relative">
+            <div className="absolute left-0 top-0 bottom-0 w-24 bg-gradient-to-r from-black to-transparent z-10 pointer-events-none" />
+            <div className="absolute right-0 top-0 bottom-0 w-24 bg-gradient-to-l from-black to-transparent z-10 pointer-events-none" />
+            
+            <div className="flex gap-3 overflow-x-auto scrollbar-thin scrollbar-thumb-zinc-800 pb-4">
+              {tools.slice(0, 10).map((tool) => (
+                <Link
+                  key={tool}
+                  href={`/tools/${tool}`}
+                  className="flex-shrink-0 px-6 py-3 text-sm border border-zinc-800 bg-zinc-900/50 hover:bg-zinc-900 hover:border-zinc-700 transition-all whitespace-nowrap"
+                  aria-label={`Open ${formatToolName(tool)} tool`}
+                >
+                  {formatToolName(tool)}
+                </Link>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* All Tools Grid */}
+        <section 
+          className="max-w-7xl mx-auto px-6 lg:px-8 py-20 border-t border-zinc-800"
+          aria-label="All available tools"
+        >
+          <div className="mb-12">
+            <h2 className="text-3xl md:text-4xl font-light mb-4 tracking-tight">
+              All Tools
             </h2>
-          </Link>
-        ))}
-      </div>
-    </section>
-
-
-
-       <ToolSearch/>
-
-
-        {/* ==================== MIDDLE AD ==================== */}
-        <div className="flex justify-center my-20">
-          <div className="bg-white/5 border border-white/10 backdrop-blur-xl rounded-xl p-3 w-[320px] h-[270px] flex justify-center items-center">
-            <AdBlock adKey="your_middle_ad_key" width={300} height={250} />
-          </div>
-        </div>
-
-        {/* Back to Home */}
-        <div className="text-center">
-          <Link
-            href={`/`}
-            className="inline-block px-8 py-3 rounded-full bg-white/5 border border-white/10 backdrop-blur-md 
-              hover:bg-white/10 hover:border-white/20 transition-all duration-300"
-          >
-            ← Back to Home
-          </Link>
-        </div>
-
-        {/* ==================== BOTTOM AD ==================== */}
-        <div className="flex justify-center mt-20">
-          <div className="bg-white/5 border border-white/10 backdrop-blur-xl rounded-xl p-3 w-[320px] h-[270px] flex justify-center items-center">
-            <AdBlock adKey="your_bottom_ad_key" width={300} height={250} />
-          </div>
-        </div>
-      </div>
-
-      {/* ============================================================================================
-          FOOTER FIXED AT BOTTOM
-      ============================================================================================= */}
-      <footer className="py-16 px-10 bg-black/40 border-t border-white/10 backdrop-blur-xl text-gray-400">
-        <div className="max-w-6xl mx-auto grid md:grid-cols-4 gap-10">
-
-          {/* Brand */}
-          <div>
-            <h3 className="text-xl font-bold text-white mb-3">EssentriqLab</h3>
-            <p className="text-gray-400 text-sm leading-relaxed">
-              The studio behind Utillect — building simple, useful, anonymous tools.
+            <p className="text-zinc-400 font-light">
+              Browse our complete collection of utilities
             </p>
           </div>
 
-          {/* Tools */}
-          <div>
-            <h4 className="font-semibold text-white mb-2">Tools</h4>
-            <ul className="space-y-2 text-sm text-gray-400">
-              <li>Text Utilities</li>
-              <li>Developer Tools</li>
-              <li>Converters</li>
-            </ul>
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-px bg-zinc-800/20">
+            {tools.map((tool) => (
+              <article
+                key={tool}
+                className="group bg-zinc-900/50 p-6 hover:bg-zinc-900 transition-all duration-300"
+              >
+                <Link
+                  href={`/tools/${tool}`}
+                  className="block space-y-4"
+                  aria-label={`Open ${formatToolName(tool)} tool`}
+                >
+                  <div className="w-10 h-10 border border-zinc-800 flex items-center justify-center group-hover:border-zinc-700 transition-colors">
+                    <div className="w-2 h-2 bg-white"></div>
+                  </div>
+                  
+                  <div>
+                    <h3 className="text-lg font-light tracking-tight mb-2 group-hover:text-white transition-colors">
+                      {formatToolName(tool)}
+                    </h3>
+                    <p className="text-sm text-zinc-500 font-light">
+                      Free online tool
+                    </p>
+                  </div>
+                  
+                  <div className="flex items-center gap-2 text-sm text-zinc-400 group-hover:text-zinc-300 transition-colors">
+                    <span>Open Tool</span>
+                    <svg className="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                    </svg>
+                  </div>
+                </Link>
+              </article>
+            ))}
           </div>
+        </section>
 
-          {/* Company */}
-          <div>
-            <h4 className="font-semibold text-white mb-2">Company</h4>
-            <ul className="space-y-2 text-sm text-gray-400">
-              <li>About</li>
-              <li className="opacity-50 cursor-not-allowed">Blog (coming soon)</li>
-              <li className="opacity-50 cursor-not-allowed">Careers (not hiring)</li>
-            </ul>
-          </div>
-
-          {/* Contact */}
-          <div>
-            <h4 className="font-semibold text-white mb-2">Contact</h4>
-            <p className="text-sm text-gray-300">essentriqlab@gmail.com</p>
-            <p className="text-sm text-gray-400 mt-2">
-              We welcome tool suggestions and improvements.
+        {/* Tool Categories Section for SEO */}
+        <section 
+          className="max-w-7xl mx-auto px-6 lg:px-8 py-20 border-t border-zinc-800"
+          aria-label="Tool categories"
+        >
+          <div className="mb-12">
+            <h2 className="text-3xl md:text-4xl font-light mb-4 tracking-tight">
+              Browse by Category
+            </h2>
+            <p className="text-zinc-400 font-light">
+              Find the right tool for your needs
             </p>
           </div>
 
-        </div>
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {Object.entries(toolCategories).map(([category, toolList]) => (
+              <div key={category} className="space-y-3">
+                <h3 className="text-xl font-light tracking-tight capitalize border-b border-zinc-800 pb-2">
+                  {category} Tools
+                </h3>
+                <ul className="space-y-2">
+                  {toolList.map((tool) => (
+                    <li key={tool}>
+                      <span className="text-sm text-zinc-400 font-light hover:text-zinc-300 transition-colors cursor-pointer">
+                        {tool}
+                      </span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+          </div>
+        </section>
 
-        <div className="text-center mt-10 text-gray-500 text-sm">
-          © {new Date().getFullYear()} EssentriqLab. All rights reserved.
-        </div>
-      </footer>
-    </main>
+        {/* Features Section */}
+        <section className="max-w-7xl mx-auto px-6 lg:px-8 py-20 border-t border-zinc-800">
+          <div className="grid md:grid-cols-3 gap-12">
+            <div className="space-y-3">
+              <div className="w-12 h-12 border border-zinc-800 flex items-center justify-center">
+                <div className="w-2 h-2 bg-white"></div>
+              </div>
+              <h3 className="text-xl font-light">Instant Access</h3>
+              <p className="text-sm text-zinc-400 font-light leading-relaxed">
+                All tools load instantly with zero setup. Start working immediately without creating an account.
+              </p>
+            </div>
+
+            <div className="space-y-3">
+              <div className="w-12 h-12 border border-zinc-800 flex items-center justify-center">
+                <div className="w-2 h-2 bg-white"></div>
+              </div>
+              <h3 className="text-xl font-light">Privacy First</h3>
+              <p className="text-sm text-zinc-400 font-light leading-relaxed">
+                Most tools process data directly in your browser. Your files never leave your device.
+              </p>
+            </div>
+
+            <div className="space-y-3">
+              <div className="w-12 h-12 border border-zinc-800 flex items-center justify-center">
+                <div className="w-2 h-2 bg-white"></div>
+              </div>
+              <h3 className="text-xl font-light">Always Free</h3>
+              <p className="text-sm text-zinc-400 font-light leading-relaxed">
+                Every tool remains free forever. Supported by minimal ads that don't interfere with usage.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        {/* CTA Section */}
+        <section className="max-w-7xl mx-auto px-6 lg:px-8 py-32 border-t border-zinc-800 text-center">
+          <div className="space-y-6">
+            <h2 className="text-3xl md:text-4xl font-light tracking-tight">
+              Need a Specific Tool?
+            </h2>
+            <p className="text-zinc-400 font-light max-w-xl mx-auto">
+              We're constantly adding new utilities based on user requests. 
+              Let us know what you need.
+            </p>
+            <Link
+              href="/#contact"
+              className="inline-block px-8 py-4 bg-white text-black hover:opacity-90 transition-all text-sm tracking-wider"
+            >
+              SUGGEST A TOOL
+            </Link>
+          </div>
+        </section>
+
+        {/* Footer */}
+        <footer className="border-t border-zinc-800 py-16 px-6 lg:px-8">
+          <div className="max-w-7xl mx-auto">
+            <div className="grid md:grid-cols-4 gap-12 mb-16">
+              <div className="space-y-4">
+                <h3 className="text-sm tracking-widest">ESSENTRIQLAB</h3>
+                <p className="text-zinc-400 text-sm font-light leading-relaxed">
+                  The studio behind Utillect. Building simple, powerful tools for everyone.
+                </p>
+              </div>
+
+              <div className="space-y-3">
+                <h4 className="text-sm tracking-widest">TOOLS</h4>
+                <ul className="space-y-2 text-sm text-zinc-400 font-light">
+                  <li><Link href="/tools" className="hover:text-white transition-colors">All Tools</Link></li>
+                  <li><Link href="/tools/text" className="hover:text-white transition-colors">Text Utilities</Link></li>
+                  <li><Link href="/tools/dev" className="hover:text-white transition-colors">Developer Tools</Link></li>
+                  <li><Link href="/tools/convert" className="hover:text-white transition-colors">Converters</Link></li>
+                </ul>
+              </div>
+
+              <div className="space-y-3">
+                <h4 className="text-sm tracking-widest">COMPANY</h4>
+                <ul className="space-y-2 text-sm text-zinc-400 font-light">
+                  <li><Link href="/#about" className="hover:text-white transition-colors">About</Link></li>
+                  <li><Link href="/privacy" className="hover:text-white transition-colors">Privacy</Link></li>
+                  <li><Link href="/terms" className="hover:text-white transition-colors">Terms</Link></li>
+                </ul>
+              </div>
+
+              <div className="space-y-3">
+                <h4 className="text-sm tracking-widest">CONTACT</h4>
+                <p className="text-zinc-400 text-sm font-light">
+                  essentriqlab@gmail.com
+                </p>
+              </div>
+            </div>
+
+            <div className="pt-8 border-t border-zinc-800 text-center">
+              <p className="text-zinc-400 text-sm font-light tracking-wider">
+                © {currentYear} ESSENTRIQLAB. ALL RIGHTS RESERVED.
+              </p>
+            </div>
+          </div>
+        </footer>
+      </main>
+    </>
   );
 }
